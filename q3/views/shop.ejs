@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Products Page</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/js/index.js"></script>
+</head>
+
+<body>
+    <div class="products">
+        <% for(let i=0; i < products.length; i++) {%>
+            <%- include('product.ejs', {product: products[i]}) %>
+                <% } %>
+    </div>
+    
+    <hr/>
+    <div>
+        <div>Number of items: <span id="no_of_items">0</span></div>
+        <div><a href="/cart">Go to cart</a></div>
+    </div>
+</body>
+
+</html>
