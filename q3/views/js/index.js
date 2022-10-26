@@ -2,24 +2,23 @@ $(() => {
     const forms = $(".formAddProduct");
     const noOfItems = $('#no_of_items');
 
-    const addedToCart = (data) => {
-        noOfItems.text(data.no_of_items);
-    };
-
     const failedToAdd = () => {
         alert('something went wrong while trying to add data');
     };
 
     $("button.addToCart").click(function () {
         const name = $(this).siblings('[name=name]').val();
+        const price = $(this).siblings('[name=price]').val();
 
         $.post(
             "/addToCart",
             {
-                name: name,
+                name, price
             },
         )
-            .done(addedToCart)
+            .done((data) => {
+                noOfItems.text(data.num_of_items);
+            })
             .fail(failedToAdd);
 
         // console.log($(event.target).siblings('[name=name]').val());
